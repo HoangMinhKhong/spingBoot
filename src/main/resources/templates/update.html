@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <div th:replace="header.html"></div>
+    </head>
+    <body style="font-size: 0.9rem;">
+        <div class="container">
+            <div th:replace="menu.html"></div>
+            <h3>Chỉnh sửa đơn hàng</h3>
+            <div class="table-responsive">
+                <form id="frmUpdateOrder" th:action="@{/save-update}" th:object="${updateOrder}" method="POST">
+	                <div class="form-group">
+	                    <label for="Amount">Mã </label>
+	                    <input field="*{orderId}" class="form-control" data-val="true" id="orderId" name="orderId" type="number" th:value="${orderManagerment.oderId}">
+	                </div>
+	                <div class="form-group">
+	                    <label for="typePay">Loại hàng hóa</label>
+	                    <select name="typePay" field="*{typePay}" id="typePay" class="form-control">
+	                        <option value="topup">Nạp tiền điện thoại</option>
+	                        <option value="billpayment">Thanh toán hóa đơn</option>
+	                        <option value="fashion">Thời trang</option>
+	                    </select>
+	                </div>
+	                <div class="form-group">
+	                    <label for="Amount">Số tiền</label>
+	                    <input field="*{money}" class="form-control" data-val="true" id="money" name="money" type="tel" th:value="${orderManagerment.money}">
+	                </div>
+	                <div class="form-group">
+	                    <label for="OrderDescription">Nội dung thanh toán</label>
+	                    <textarea field="*{content}" class="form-control" cols="20" id="OrderDescription" name="content" rows="2" th:utext="${date}">
+	                    </textarea>
+	                </div>
+	                <div class="form-group">
+	                    <label for="bankcode">Ngân hàng</label>
+	                    <select name="bank" id="bank" class="form-control" field="*{bank}">
+	                        <option th:each ="bankArray : ${bankArray}" th:value="${bankArray.key}" th:utext="${bankArray.value}" th:selected="(${orderManagerment.bank} == ${bankArray.key})">
+	                        </option>
+	                    </select>
+	                </div>
+	                <div class="form-group">
+	                    <label for="language">Ngôn ngữ</label>
+	                    <select name="language" id="language" class="form-control" field="*{language}">
+	                        <option th:each ="langArray : ${langArray}" th:value="${langArray.key}" th:utext="${langArray.value}" th:selected="(${orderManagerment.language} == ${langArray.key})"></option>
+	                    </select>
+	                </div>
+	                <!--<button type="submit" class="btn btn-default" id="btnPopup">Thanh toÃ¡n Popup</button>-->
+	                <button type="submit" class="btn btn-default">Thanh toán Redirect</button>
+                </form>
+            </div>
+            <p>
+                &nbsp;
+            </p>
+            <footer class="footer">
+                <p>© VNPAY 2021</p>
+            </footer>
+        </div>
+    </body>
+</html>
+

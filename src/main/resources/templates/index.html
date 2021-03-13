@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+   <div th:replace="header.html"></div> 
+</head>
+<body style="font-size: 0.9rem;">
+    <div class="container">
+    
+		<div th:replace="menu.html"></div>
+		
+        <h3>Danh sách đơn hàng</h3>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            Mã
+                        </th>
+                        <th>
+                            Số tiền
+                        </th>
+                        <th>
+                            Nội dung
+                        </th>
+                        <th>
+                            Ngày tạo
+                        </th>
+                        <th>
+                            Tình trạng
+                        </th>
+                        <th>
+                            IpAddr
+                        </th>
+                        <th></th>
+                         <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each ="orderManagerment : ${orderManagerment}">
+                        <td th:utext="${orderManagerment.oderId}">
+                        </td>
+                        <td th:utext="${orderManagerment.money}">
+                        </td>
+                        <td th:utext="${orderManagerment.content}">
+                        </td>
+                        <td class="center" th:utext="${orderManagerment.createDate}">
+                        </td>
+                        <td class="center" th:utext="${orderManagerment.status}">
+                        </td>
+                        <td th:utext="${orderManagerment.ipAddr}">
+                        </td>
+                        <td>
+                            <a th:href="@{/order-view/{id}(id=${orderManagerment.oderId})}">Chi tiết</a>
+                        </td>
+                         <td>
+                            <a th:href="@{/update-order/{id}(id=${orderManagerment.oderId})}">Chỉnh sửa</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <footer class="footer">
+            <p>© VNPAY 2021</p>
+        </footer>
+    </div>
+    <!-- /container -->
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="/tryitnow/Styles/js/ie10-viewport-bug-workaround.js"></script>
+    <script></script>
+</body>
+</html>
