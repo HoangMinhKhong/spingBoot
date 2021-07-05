@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+   <div th:replace="header.html"></div> 
+</head>
+<body style="font-size: 0.9rem;">
+    <div class="container">
+    
+		<div th:replace="menu.html"></div>
+		
+        <h3>Danh sách đơn hàng</h3>
+        <div class="table-responsive">
+        <div class="pager">
+        	<a href="/tryitnow/?page=2" title="Previous page">«</a>
+        	<a href="/tryitnow/" title="">1</a>
+        	<a href="/tryitnow/?page=2" title="">2</a><span class="current">3</span>
+        	<a href="/tryitnow/?page=4" title="">4</a>
+        	<a href="/tryitnow/?page=5" title="">5</a>
+        	<a href="/tryitnow/?page=6" title="">6</a>
+        	<a href="/tryitnow/?page=7" title="">7</a>
+        	<a href="/tryitnow/?page=8" title="">8</a>
+        	<a href="/tryitnow/?page=9" title="">9</a>
+        	<a href="/tryitnow/?page=10" title="">10</a>
+        	<span class="spacer">...</span><a href="/tryitnow/?page=3057" title="">3057</a>
+        	<a href="/tryitnow/?page=4" title="Next page">»</a>
+    	</div>
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            MÃ
+                        </th>
+                        <th>
+                            Số tiền
+                        </th>
+                        <th>
+                            Nội dung
+                        </th>
+                        <th>
+                            Ngày tạo
+                        </th>
+                        <th>
+                            Trạng thái
+                        </th>
+                        <th>
+                            IpAddr
+                        </th>
+                        <th></th>
+                         <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each ="orderManagerment : ${orderManagerment}">
+                        <td th:utext="${orderManagerment.orderId}">
+                        </td>
+                        <td th:utext="${orderManagerment.money}">
+                        </td>
+                        <td th:utext="${orderManagerment.content}">
+                        </td>
+                        <td class="center" th:utext="${orderManagerment.createDate}">
+                        </td>
+                        <td class="center" th:utext="${orderManagerment.status}">
+                        </td>
+                        <td th:utext="${orderManagerment.ipAddr}">
+                        </td>
+                        <td>
+                            <a th:href="@{/order-view/{id}(id=${orderManagerment.orderId})}">Chi tiết</a>
+                        </td>
+                         <td>
+                            <a th:href="@{/update-order/{id}(id=${orderManagerment.orderId})}">Chỉnh sửa</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <footer class="footer">
+            <p>© VNPAY 2021</p>
+        </footer>
+    </div>
+    <!-- /container -->
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="/tryitnow/Styles/js/ie10-viewport-bug-workaround.js"></script>
+    <script></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+    <head>
+       <div th:replace="header.html"></div> 
+    </head>
+    <body style="font-size: 0.9rem;">
+        <div class="container">
+            <div th:replace="menu.html"></div>
+            <h3>Chi tiáº¿t</h3>
+            <div class="table-responsive">
+                <div class="form-group">
+                    <label for="OrderId">Mã: </label>
+                    <span th:utext="${orderManagerment.orderId}"></span>
+                </div>
+                <div class="form-group">
+                    <label for="Amount">Số tiền: </label>
+                    <span th:utext="${orderManagerment.money}"></span>
+                </div>
+                <div class="form-group">
+                    <label for="OrderDescription">Nội dung thanh toán: </label>
+                    <span th:utext="${orderManagerment.content}"></span>
+                </div>
+                <div class="form-group">
+                    <label>Trạng thái: </label>
+                    <span class="pay-unsuccess" th:utext="${orderManagerment.status}"></span>
+                </div>
+            </div>
+            <p>
+                <a th:href="@{/}">Về danh sách</a>
+            </p>
+            <footer class="footer">
+                <p>Â© VNPAY 2021</p>
+            </footer>
+        </div>
+        <!-- /container -->
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="/tryitnow/Styles/js/ie10-viewport-bug-workaround.js"></script>
+        <script></script>
+    </body>
+</html>
